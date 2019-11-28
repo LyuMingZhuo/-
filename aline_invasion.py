@@ -14,12 +14,13 @@ def run_game():
     pygame.display.set_caption("Aline_Invasiopn")
 
     #创建一艘飞船
-    ship = Ship(screen)
+    ship = Ship(ai_settings,screen)
 
     #开始游戏主循环
     while True:
         #监视鼠标键盘事件
-        gf.check_events()
+        gf.check_events(ship)
+        ship.update()
         #更新屏幕图像并切换到新屏幕上
         gf.update_screen(ai_settings,screen,ship)
 
