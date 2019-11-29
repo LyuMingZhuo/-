@@ -17,20 +17,30 @@ class Ship():
         self.rect.bottom = self.screen_rect.bottom
 
         #在飞船属性centerx中存储小数
-        self.center = float(self.rect.centerx)
+        self.center1 = float(self.rect.centerx)
+        self.center2 = float(self.rect.centery)
 
         #移动标志
         self.moving_right = False
         self.moving_left = False
+        self.moving_up = False
+        self.moving_down = False
+
 
     def update(self):
         '''根据移动标志调整移动位置'''
         if self.moving_right and self.rect.right < self.screen_rect.right:
-            self.center += self.ai_settings.ship_speed_factor
+            self.center1 += self.ai_settings.ship_speed_factor
         if self.moving_left and self.rect.left > 0:
-            self.center -= self.ai_settings.ship_speed_factor
+            self.center1 -= self.ai_settings.ship_speed_factor
+        if self.moving_up and self.rect.top > 0:
+            self.center2 -= self.ai_settings.ship_speed_factor
+        if self.moving_down and self.rect.bottom < self.screen_rect.bottom:
+            self.center2 += self.ai_settings.ship_speed_factor
         #根据self.center更新rect对象
-        self.rect.centerx = self.center
+        self.rect.centerx = self.center1
+        self.rect.centery = self.center2
+
 
     def blitme(self):
         '''在指定位置绘制飞船'''
