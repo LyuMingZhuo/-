@@ -8,4 +8,8 @@ class Settings():
         self.screen_height = 800
         self.back_color = (230,230,230)
         #设置飞船属性
-        self.ship_speed_factor = 3
+        self.ship_speed_factor = 1
+        #设置子弹
+        self.bullet_speed_factor = 1
+        self.bullet_width = 15
+        self.bullet_height = 15
